@@ -30,6 +30,9 @@ jobs:
     - name: Generate Release Keystore for SantianDev
       run: keytool -genkey -v -keystore release.keystore -storepass android123 -alias upload -keypass android123 -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=SantianDev,O=SantianDev,C=RU"
 
+    - name: Grant execute permission for gradlew
+      run: chmod +x gradlew
+
     - name: Build Release APK
       env:
         KEYSTORE_PATH: ${{ github.workspace }}/release.keystore
