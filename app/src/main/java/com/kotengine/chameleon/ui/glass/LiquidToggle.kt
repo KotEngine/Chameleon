@@ -126,8 +126,8 @@ fun LiquidToggle(
                     val f = dampedDragAnimation.value
                     val padding = 2f.dp.toPx()
                     translationX =
-                        if (isLtr) lerp(padding, padding + dragWidth, f)
-                        else lerp(-padding, -(padding + dragWidth), f)
+                        if (isLtr) lerpFloat(padding, padding + dragWidth, f)
+                        else lerpFloat(-padding, -(padding + dragWidth), f)
                 }
                 .semantics { role = Role.Switch }
                 .then(dampedDragAnimation.modifier)
@@ -136,8 +136,8 @@ fun LiquidToggle(
                         backdrop,
                         rememberBackdrop(trackBackdrop) { drawBackdrop ->
                             val progress = dampedDragAnimation.pressProgress
-                            val scaleX = lerp(2f / 3f, 0.75f, progress)
-                            val scaleY = lerp(0f, 0.75f, progress)
+                            val scaleX = lerpFloat(2f / 3f, 0.75f, progress)
+                            val scaleY = lerpFloat(0f, 0.75f, progress)
                             scale(scaleX, scaleY) { drawBackdrop() }
                         },
                     ),
