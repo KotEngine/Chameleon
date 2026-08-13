@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace = "com.kotengine.chameleon"
-    compileSdk = 36
+    compileSdk = 37
 
     defaultConfig {
         applicationId = "com.kotengine.chameleon"
         minSdk = 26
-        targetSdk = 36
+        targetSdk = 37
         versionCode = 1
         versionName = "0.1.0"
     }
