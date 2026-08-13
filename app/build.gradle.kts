@@ -70,7 +70,7 @@ dependencies {
     implementation("androidx.core:core-ktx:1.15.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7")
 
-    implementation("io.github.kyant0:backdrop:2.0.0-alpha03")
+    implementation("io.github.kyant0:backdrop:2.0.0")
     implementation("io.github.kyant0:shapes:1.2.0")
 
     implementation("androidx.webkit:webkit:1.12.1")
