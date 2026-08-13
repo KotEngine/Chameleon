@@ -13,9 +13,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ShaderBrush
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.util.fastCoerceIn
-import com.kyant.backdrop.RuntimeShader
-import com.kyant.backdrop.asComposeShader
-import com.kyant.backdrop.isRuntimeShaderSupported
+import android.graphics.RuntimeShader
+import android.os.Build
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -35,7 +34,7 @@ class InteractiveHighlight(
     val offset: Offset get() = positionAnimation.value - startPosition
 
     private val shader =
-        if (isRuntimeShaderSupported()) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             RuntimeShader(
                 """
 uniform float2 size;
@@ -70,7 +69,7 @@ half4 main(float2 coord) {
                             pos.y.fastCoerceIn(0f, size.height),
                         )
                     }
-                    drawRect(ShaderBrush(shader.asComposeShader()), blendMode = BlendMode.Plus)
+                    drawRect(ShaderBrush(shader), blendMode = BlendMode.Plus)
                 } else {
                     drawRect(Color.White.copy(0.25f * progress), blendMode = BlendMode.Plus)
                 }
